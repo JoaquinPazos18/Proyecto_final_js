@@ -4,6 +4,28 @@ var puntos = 0;
 var necesarios = 30;
 var tiempo = 60;
 
+function restarTiempo(){
+   tiempo--
+   document.getElementById("tiempo").innerHTML = "Tiempo: " + tiempo;
+   if(tiempo == 0){
+      respuesta = confirm("Perdiste maestro" + "Deseas jugar una vez mas?");
+         if(respuesta == true){
+             // El metodo location.reload() vuelve a cargar la URL actual al ser ejecutado 
+            // en el navegador, de esta manera actualizamos cuando el jugador pierde
+            location.reload();}
+         else{
+            var salir = document.getElementById("limpio");
+            salir.innerHTML = "Gracias por jugar"
+               
+            }
+      // alert("Perdiste maestro");      
+            // tiempo = 0;
+            // puntos = 0;
+   
+         
+   }
+}
+
 function sumarPuntos(){
    puntos++;
 
@@ -14,24 +36,24 @@ function sumarPuntos(){
    document.getElementById("player").style.marginLeft = randNum2 + "px";
 
    if(puntos == 30){
-      alert("GANASTE CRACK DEL MOUSE!!!");
+
+      respuesta = confirm("GANASTE CRACK DEL MOUSE!!!" + "Deseas jugar una vez mas?");
+      if(respuesta == true){
+         location.reload();}
+         else{
+            var salir = document.getElementById("limpio");
+        
+            salir.innerHTML = "Gracias por jugar"
+            
+         }
+      // alert("GANASTE CRACK DEL MOUSE!!!");           
    }
 }
 
 
 
 
-function restarTiempo(){
-   tiempo--
-   document.getElementById("tiempo").innerHTML = "Tiempo: " + tiempo;
-   if(tiempo == 0){
-      alert("Perdiste maestro");
-      tiempo = 0;
-      puntos = 0;
-   }
 
-
-}
 
 
 setInterval(restarTiempo, 1000);
